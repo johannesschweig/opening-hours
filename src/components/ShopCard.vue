@@ -1,13 +1,10 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useStore } from '@/stores/index';
+import { type Shop } from '@/stores/shops'
 
 const store = useStore()
 
-interface Shop {
-  name: string,
-  openingHours: string[],
-}
 
 const weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 
@@ -21,7 +18,7 @@ function getWeekday(num: number) {
 }
 
 function clickShop() {
-  store.setExpand(props.shop.name)  
+  store.setExpand(props.shop.name)
 }
 
 
@@ -75,14 +72,14 @@ function getStatus(openingHours: string[]) {
   }
 }
 
-const getCurrentWeekDay = computed(() : number => {
+const getCurrentWeekDay = computed((): number => {
   let date = new Date()//"2023-05-07")
   return [6, 0, 1, 2, 3, 4, 5][date.getDay()]; // shift from sunday to monday
 })
 </script>
 
 <template>
-  <div  :class="['shop', { 'active': props.expand }]" @click="clickShop()">
+  <div :class="['shop', { 'active': props.expand }]" @click="clickShop()">
     <div class="shopName">
       <span>{{ shop.name }}</span>
       <span class="status" :style="getStatus(shop.openingHours).style">
@@ -99,29 +96,30 @@ const getCurrentWeekDay = computed(() : number => {
 
 <style scoped>
 .shop {
-    padding: 16px;
-    margin-bottom: 4px;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-  }
+  padding: 16px;
+  margin-bottom: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
 
-  .shop.active {
-    border-color: white;
-  }
+.shop.active {
+  border-color: white;
+  grid-column: 1/3;
+}
 
-  .shopName {
-    font-size: 1.5rem;
-  }
+.shopName {
+  font-size: 1.5rem;
+}
 
-  .shopName .status {
-    float: right;
-    font-size: 1rem;
-  }
+.shopName .status {
+  float: right;
+  font-size: 1rem;
+}
 
-  .hours {
-    margin-top: 16px;
-  }
-  
-  .hours div {
-    line-height: 24px;
-  }
+.hours {
+  margin-top: 16px;
+}
+
+.hours div {
+  line-height: 24px;
+}
 </style>
