@@ -1,16 +1,16 @@
 <script setup lang="ts">
+import { useRoute } from 'vue-router'
+import { SHOPS, type Shop } from '@/stores/shops'
 import { computed } from 'vue';
-import { RouterLink } from 'vue-router';
-import { type Shop } from '@/stores/shops'
+
+const route = useRoute()
+const path = route.path
+const shopName = route.path.replace('/detail/', '')
+
+const shop : Shop = SHOPS.filter(s => s.name === shopName)[0]
 
 const weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 
-const props = defineProps<{
-  shop: Shop,
-  expand: boolean,
-}>()
-
-const route = `/detail/${props.shop.name}`
 
 function getWeekday(num: number) {
   return weekday[num]
@@ -70,30 +70,27 @@ const getCurrentWeekDay = computed((): number => {
   return [6, 0, 1, 2, 3, 4, 5][date.getDay()]; // shift from sunday to monday
 })
 
+
+
 </script>
 
 <template>
-  <RouterLink :to='route' :class="['shop']">
+  <div :class="['shop']">
     <div class="shopName">
-      <span>{{ shop.name }}</span>
+      <RouterLink to="/"><h1>{{ `< ${shop.name}` }}</h1></RouterLink>
       <span class="status" :style="getStatus(shop.openingHours).style">
         {{ getStatus(shop.openingHours).message }}
       </span>
     </div>
-  </RouterLink>
+    <div class="hours">
+      <div v-for="(day, index) in shop.openingHours" :style="{ 'opacity': index === getCurrentWeekDay ? 1 : 0.5 }">
+        {{ getWeekday(index) }} {{ day }}
+      </div>
+    </div>
+  </div>
 </template>
 
 <style scoped>
-.shop {
-  padding: 16px;
-  margin-bottom: 4px;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-}
-
-.shopName {
-  font-size: 1.2rem;
-}
-
 .shopName .status {
   float: right;
   font-size: 1rem;

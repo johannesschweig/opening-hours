@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
 import { TYPE, SHOPS, type Shop } from '@/stores/shops'
 import { ref, computed } from 'vue';
 import ShopCard from '@/components/ShopCard.vue'
@@ -13,7 +12,7 @@ const expand = ref<string>("")
 </script>
 
 <template>
-  <div id="wrapper">
+  <div>
     <h1>Opening hours</h1>
     <h2>Bakery</h2>
     <div class="grid">
@@ -34,10 +33,6 @@ const expand = ref<string>("")
 </template>
 
 <style scoped>
-#wrapper {
-  margin: 16px 8px;
-}
-
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
