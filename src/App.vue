@@ -3,13 +3,7 @@ import { RouterView } from "vue-router"
 </script>
 
 <template>
-  <div id="wrapper">
+  <div class="mx-2 my-4">
     <RouterView />
   </div>
 </template>
-
-<style scoped>
-#wrapper {
-  margin: 16px 8px;
-}
-</style>

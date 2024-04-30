@@ -7,7 +7,6 @@ const weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturd
 
 const props = defineProps<{
   shop: Shop,
-  expand: boolean,
 }>()
 
 const route = `/detail/${props.shop.name}`

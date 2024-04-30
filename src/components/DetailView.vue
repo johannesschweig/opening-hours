@@ -7,7 +7,7 @@ const route = useRoute()
 const path = route.path
 const shopName = route.path.replace('/detail/', '')
 
-const shop : Shop = SHOPS.filter(s => s.name === shopName)[0]
+const shop: Shop = SHOPS.filter(s => s.name === shopName)[0]
 
 const weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 
@@ -75,32 +75,17 @@ const getCurrentWeekDay = computed((): number => {
 </script>
 
 <template>
-  <div :class="['shop']">
-    <div class="shopName">
-      <RouterLink to="/"><h1>{{ `< ${shop.name}` }}</h1></RouterLink>
-      <span class="status" :style="getStatus(shop.openingHours).style">
-        {{ getStatus(shop.openingHours).message }}
-      </span>
-    </div>
-    <div class="hours">
-      <div v-for="(day, index) in shop.openingHours" :style="{ 'opacity': index === getCurrentWeekDay ? 1 : 0.5 }">
-        {{ getWeekday(index) }} {{ day }}
-      </div>
+  <div>
+    <RouterLink to="/">
+      <div class="text-3xl mb-3">{{ `< ${shop.name}` }}</div>
+    </RouterLink>
+    <span class="float-right" :style="getStatus(shop.openingHours).style">
+      {{ getStatus(shop.openingHours).message }}
+    </span>
+  </div>
+  <div>
+    <div v-for="(day, index) in shop.openingHours" :style="{ 'opacity': index === getCurrentWeekDay ? 1 : 0.5 }">
+      {{ getWeekday(index) }} {{ day }}
     </div>
   </div>
 </template>
-
-<style scoped>
-.shopName .status {
-  float: right;
-  font-size: 1rem;
-}
-
-.hours {
-  margin-top: 16px;
-}
-
-.hours div {
-  line-height: 24px;
-}
-</style>
