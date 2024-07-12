@@ -1,16 +1,16 @@
 export enum TYPE {
-  GROCERIES = 'groceries',
-  BAKERY = 'bakery',
-  REST = 'rest',
+  GROCERIES = "groceries",
+  BAKERY = "bakery",
+  REST = "rest",
 }
 
 export interface Shop {
-  name: string,
-  type: TYPE,
-  openingHours: string[],
+  name: string;
+  type: TYPE;
+  openingHours: string[];
 }
 
-export const SHOPS : Shop[] = [
+export const SHOPS: Shop[] = [
   {
     name: "Hellweg",
     type: TYPE.REST,
@@ -57,7 +57,7 @@ export const SHOPS : Shop[] = [
       "07:00-22:00",
       "07:00-22:00",
       "07:00-22:00",
-    ]
+    ],
   },
   {
     name: "Kaufland",
@@ -69,19 +69,19 @@ export const SHOPS : Shop[] = [
       "07:00-22:00",
       "07:00-22:00",
       "07:00-22:00",
-    ]
+    ],
   },
   {
     name: "Fit Fahrradladen",
     type: TYPE.REST,
     openingHours: [
-      "09:00-19:00",
-      "09:00-19:00",
-      "09:00-19:00",
-      "09:00-19:00",
-      "09:00-19:00",
-      "09:00-15:00",
-    ]
+      "09:00-18:00",
+      "09:00-18:00",
+      "09:00-18:00",
+      "09:00-18:00",
+      "09:00-18:00",
+      "09:00-14:00",
+    ],
   },
   {
     name: "Stadtbad Tiergarten",
@@ -89,12 +89,10 @@ export const SHOPS : Shop[] = [
     openingHours: [
       "06:30-16:00",
       "06:30-22:00",
-      "06:30-22:00",
+      "10:00-22:00",
       "06:30-08:00",
       "06:30-22:00",
-      "09:00-17:00",
-      "09:00-17:00",
-    ]
+    ],
   },
   {
     name: "Hansabibliothek",
@@ -106,7 +104,7 @@ export const SHOPS : Shop[] = [
       "12:00-18:00",
       "13:00-19:30",
       "10:00-14:00",
-    ]
+    ],
   },
   {
     name: "Steinecke",
@@ -119,6 +117,6 @@ export const SHOPS : Shop[] = [
       "06:00-18:00",
       "06:30-12:00",
       "07:00-11:00",
-    ]
-  }
-]
+    ],
+  },
+];
