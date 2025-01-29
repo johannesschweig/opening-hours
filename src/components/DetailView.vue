@@ -25,9 +25,10 @@ function getWeekday(num: number) {
       {{ getStatus(shop.openingHours).message }}
     </span>
   </div>
-  <div>
+  <div class="mb-3">
     <div v-for="(day, index) in shop.openingHours" :style="{ 'opacity': index === getCurrentWeekDay() ? 1 : 0.5 }">
       {{ getWeekday(index) }} {{ day }}
     </div>
   </div>
+  <a class="text-gray-500" :href="shop.link">Website</a>
 </template>

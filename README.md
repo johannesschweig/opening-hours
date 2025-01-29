@@ -1,6 +1,6 @@
 # opening-hours
 
-A mobile-friendly website to check the opening hours of local businesses. Live at https://lonely-afterthought.surge.sh/
+A mobile-friendly website to check the opening hours of local businesses. Live at https://opening-hours.surge.sh/.
 
 ## Project Setup
 
