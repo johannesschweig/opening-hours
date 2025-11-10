@@ -42,7 +42,7 @@ export const SHOPS: Shop[] = [
     name: "Domberger",
     type: TYPE.BAKERY,
     openingHours: [
-      "15:00-18:30",
+      "12:00-18:30",
       "08:00-18:30",
       "08:00-18:30",
       "08:00-18:30",
